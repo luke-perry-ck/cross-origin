@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parent Page</title>
+    <script>
+        window.addEventListener('message', function(event) {
+            // Check the origin of the data!
+            if (event.origin !== "https://luke-perry-ck.github.io") {
+                // Not the expected origin: Reject the message!
+                console.log('|PARENT| --- Message received from unexpected origin:', event)
+                return;
+            }
+	
+  					var data = JSON.parse(event.data)
+
+            // Handle the message
+            console.log('|PARENT| --- Messaged received from:', event) 
+            console.log('|PARENT| ---', data);
+        }, false);
+    </script>
+</head>
+<body>
+    <h5>Look at the console logs</h5>
+    
+    </h5>
+    <iframe src="https://luke-perry-ck.github.io/cross-origin/" sandbox="allow-scripts allow-same-origin" width="500" height="500" referrerpolicy="origin-when-cross-origin" />
+</body>
+</html>
