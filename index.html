@@ -12,8 +12,6 @@
             console.log('|IFRAME| --- loaded')
             console.log('|IFRAME| --- loaded by document.referrer:', document.referrer)
 
-            console.log('|IFRAME| --- parent cookies:', window.parent.document.cookie);
-
             // Only post message if the parent origin is the expected one
             if (window.parent && document.referrer === expectedParentOrigin) {
                 console.log('|IFRAME| --- posting message to parent: ', expectedParentOrigin)
