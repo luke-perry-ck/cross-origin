@@ -16,6 +16,8 @@
             if (window.parent && document.referrer === expectedParentOrigin) {
                 console.log('--- iframe posting message to parent: ---', expectedParentOrigin)
                 window.parent.postMessage('Hello from the iframe!', expectedParentOrigin);
+            } else {
+                console.log('--- issue with expected parent ---', document.referrer)
             }
         };
     </script>
