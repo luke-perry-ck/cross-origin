@@ -9,15 +9,17 @@
     <script>
         var expectedParentOrigin = 'https://fiddle.jshell.net/';
         window.onload = function() {
-            console.log('--- IFRAME LOADED ---')
-            console.log('--- Loaded by: document.referrer ---', document.referrer)
+            console.log('|IFRAME| --- loaded')
+            console.log('|IFRAME| --- loaded by document.referrer:', document.referrer)
 
-            // Only post message if 
+            console.log('|IFRAME| --- parent cookies:', window.parent.document.cookie);
+
+            // Only post message if the parent origin is the expected one
             if (window.parent && document.referrer === expectedParentOrigin) {
-                console.log('--- iframe posting message to parent: ---', expectedParentOrigin)
+                console.log('|IFRAME| --- posting message to parent: ', expectedParentOrigin)
                 window.parent.postMessage('Hello from the iframe!', expectedParentOrigin);
             } else {
-                console.log('--- issue with expected parent ---', document.referrer)
+                console.log('|IFRAME| --- issue with expected parent:', document.referrer)
             }
         };
     </script>
