@@ -7,8 +7,14 @@
     <h1>Hello, Cross Origin!</h1>
 
     <script>
-        console.log('--- Luke Log initial ---')
-        console.log('--- Luke Log, document.referrer ---', document.referrer);
+        var expectedParentOrigin = 'https://www.w3schools.com/';
+        window.onload = function() {
+            console.log('--- IFRAME LOADED ---')
+
+            if (window.parent && window.parent.location.origin === expectedParentOrigin) {
+                window.parent.postMessage('Hello from the iframe!', expectedParentOrigin);
+            }
+        };
     </script>
 </body>
 </html>
